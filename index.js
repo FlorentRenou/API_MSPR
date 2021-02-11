@@ -81,10 +81,10 @@ app.put('/users/:id', (req, res) => {
     const userID = req.params.id
     body.id = userID
     const users = getUsers()
-    const user = findUser(promotionID)
+    const user = findUser(userID)
     if (user) {
-        const promotionIdx = users.findIndex(b => b.id === userID)
-        users.splice(promotionIdx, 1, body)
+        const userIdx = users.findIndex(b => b.id === userID)
+        users.splice(userIdx, 1, body)
         fs.writeFileSync(__dirname + '\\.\\Users.json', JSON.stringify(users))
         res.send(body)
     } else {
@@ -156,11 +156,11 @@ app.patch('/users/:id', (req, res) => {
     printLog(req)
     const body = req.body
     const userID = req.params.id
-    const users = getPromotions()
-    const user = findPromotion(userID)
+    const users = getUsers()
+    const user = findUser(userID)
     if (user) {
         const newUser = Object.assign({}, user, body)
-        const userIdx = user.findIndex(b => b.id === userID)
+        const userIdx = users.findIndex(b => b.id === userID)
         users.splice(userIdx, 1, newUser)
         fs.writeFileSync(__dirname + '\\.\\User.json', JSON.stringify(users))
         res.send(newUser)
