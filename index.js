@@ -162,7 +162,7 @@ app.patch('/users/:id', (req, res) => {
         const newUser = Object.assign({}, user, body)
         const userIdx = users.findIndex(b => b.id === userID)
         users.splice(userIdx, 1, newUser)
-        fs.writeFileSync(__dirname + '\\.\\User.json', JSON.stringify(users))
+        fs.writeFileSync(__dirname + '\\.\\Users.json', JSON.stringify(users))
         res.send(newUser)
     } else {
         res.status(404).end()
