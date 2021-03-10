@@ -8,9 +8,11 @@ const { v4: uuidv4 } = require('uuid')
 app.use(express.json())
 app.use(cors())
 
+const { getPromotionsDB, findPromotionsDB, replacePromotionsDB, insertPromotionsDB, deletePromotionsDB } = require('./maria_db')
+
 const getPromotions = () => {
-    purgeCache('./Promotions.json')
-    return require('./Promotions.json')
+    //purgeCache('./Promotions.json')
+    return getPromotionsDB().then(v => response.send(v))
 }
 
 const getUsers = () => {
@@ -28,7 +30,7 @@ app.listen(port, () => {
 
 app.get('/promotions', (req, res) => {
     printLog(req)
-    res.status(200).json(getPromotions())
+    getPromotionsDB().then(v => res.send(v))
 })
 
 app.get('/users', (req, res) => {
@@ -94,12 +96,8 @@ app.put('/users/:id', (req, res) => {
 
 app.post('/promotions', (req, res) => {
     printLog(req)
-    let promotions = getPromotions()
-    let newPromotion = req.body
-    newPromotion.id = uuidv4()
-    promotions.push(newPromotion)
-    fs.writeFileSync(__dirname + '\\.\\Promotions.json', JSON.stringify(promotions))
-    res.status(201).send(newPromotion)
+    insertPromotionsDB(req.body)
+        .then(promotion => req.status(201).send(promotion))
 })
 app.post('/users', (req, res) => {
     printLog(req)
