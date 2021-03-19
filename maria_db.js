@@ -44,8 +44,8 @@ const insertPromotionsDB = (promotion) => {
         [newpromotion.id, newpromotion.nom, newpromotion.promotion, newpromotion.categorie_id, newpromotion.nb_utilisation, newpromotion.image, newpromotion.date_expiration, newpromotion.description, newpromotion.utilisateur_id])
         .then(() => findPromotionsDB(newpromotion.id))
 }
-const insertUsersDB = (promotion) => {
-    const newuser = Object.assign({}, promotion, { id: uuidv4() })
+const insertUsersDB = (user) => {
+    const newuser = Object.assign({}, user, { id: uuidv4() })
     return query('insert into utilisateur (id, nom, prenom, email, motDePasse, admin) values (?, ?, ?, ?, ?, ?)',
         [newuser.id, newuser.nom, newuser.prenom, newuser.email, newuser.motDePasse, newuser.admin])
         .then(() => findUsersDB(newuser.id))
