@@ -1,0 +1,437 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My User Project CRUD",
+    "description": "My User Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    },
+    {
+      "name": "Promotions",
+      "description": "API for promotions in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+
+
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/UserWithoutId"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of user that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user with give ID",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "users",
+            "in": "body",
+            "description": "User with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/UserWithoutId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User is updated",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update user with give ID",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "users",
+            "in": "body",
+            "description": "User with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/UserWithoutId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User is updated",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete user with given ID",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "User is deleted",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/promotions": {
+      "get": {
+        "tags": [
+          "Promotions"
+        ],
+        "summary": "Get all promotions in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Promotions"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Promotions"
+        ],
+        "description": "Create new promotions in system",
+        "parameters": [
+          {
+            "name": "promotions",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/PromotionsWithoutId"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/Promotions"
+            }
+          }
+        }
+      }
+    },
+    "/promotions/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of promotions that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Promotions"
+        ],
+        "summary": "Get all promotions in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Promotions"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update promotions with give ID",
+        "tags": [
+          "Promotions"
+        ],
+        "parameters": [
+          {
+            "name": "promotions",
+            "in": "body",
+            "description": "promotions with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/PromotionsWithoutId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Promotions is updated",
+            "schema": {
+              "$ref": "#/definitions/Promotions"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update promotions with give ID",
+        "tags": [
+          "Promotions"
+        ],
+        "parameters": [
+          {
+            "name": "promotions",
+            "in": "body",
+            "description": "promotions with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/PromotionsWithoutId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "promotions is updated",
+            "schema": {
+              "$ref": "#/definitions/Promotions"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete promotions with given ID",
+        "tags": [
+          "Promotions"
+        ],
+        "responses": {
+          "200": {
+            "description": "Promotions is deleted",
+            "schema": {
+              "$ref": "#/definitions/Promotions"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Users": {
+      "required": [
+        "id",
+        "nom",
+        "prenom",
+        "email",
+        "motDePasse",
+        "admin"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "nom": {
+          "type": "string"
+        },
+        "prenom": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "motDePasse": {
+          "type": "string"
+        },
+        "admin": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UserWithoutId": {
+      "required": [
+        "nom",
+        "prenom",
+        "email",
+        "motDePasse",
+        "admin"
+      ],
+      "properties": {
+        "nom": {
+          "type": "string"
+        },
+        "prenom": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "motDePasse": {
+          "type": "string"
+        },
+        "admin": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Promotions": {
+      "required": [
+        "id",
+        "nom",
+        "promotion",
+        "categorie_id",
+        "nb_utilisation",
+        "image",
+        "date_expiration",
+        "description",
+        "utilisateur_id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "nom": {
+          "type": "string"
+        },
+        "promotion": {
+          "type": "string"
+        },
+        "categorie_id": {
+          "type": "string"
+        },
+        "nb_utilisation": {
+          "type": "number"
+        },
+        "image": {
+          "type": "string"
+        },
+        "date_expiration": {
+          "type": "number"
+        },
+        "description": {
+          "type": "string"
+        },
+        "utilisateur_id": {
+          "type": "string"
+        }
+      }
+    },
+    "PromotionsWithoutId": {
+      "required": [
+        "nom",
+        "promotion",
+        "categorie_id",
+        "nb_utilisation",
+        "image",
+        "date_expiration",
+        "description",
+        "utilisateur_id"
+      ],
+      "properties": {
+        "nom": {
+          "type": "string"
+        },
+        "promotion": {
+          "type": "string"
+        },
+        "categorie_id": {
+          "type": "string"
+        },
+        "nb_utilisation": {
+          "type": "number"
+        },
+        "image": {
+          "type": "string"
+        },
+        "date_expiration": {
+          "type": "number"
+        },
+        "description": {
+          "type": "string"
+        },
+        "utilisateur_id": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
